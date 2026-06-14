@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------------------------- #
 # Title: Presentation Classes
-# # Description: A collection of classes for managing presentation
+# # Description: A collection of classes for managing presentation to the user.
 # ChangeLog: (Who, When, What)
 # Robby Hanovich, 7 June 2026, Created Script
 # -------------------------------------------------------------------------------------------------
@@ -14,7 +14,6 @@ class IO:
     ChangeLog: (Who, When, What)
     RRoot,1.1.2030,Created Class
     """
-    pass
 
     @staticmethod
     def output_error_messages(message: str, error: Exception = None):
@@ -58,14 +57,13 @@ class IO:
 
         :return: string with the users choice
         """
-        choice = "0"
+        choice = ""
         try:
             choice = input("Enter your menu choice number: ")
             if choice not in ("1", "2", "3", "4"):  # Note these are strings
-                raise Exception("Please, choose only 1, 2, 3, or 4")
+                raise ValueError ("Please, choose only 1, 2, 3, or 4")
         except Exception as e:
             IO.output_error_messages(e.__str__())  # passing the exception object to avoid the technical message
-
         return choice
 
 
@@ -101,11 +99,12 @@ class IO:
 
 
     @staticmethod
-    def input_employee_data(employee_data: list, employee_type: Employee):
-        """ This function gets the first name, last name, and GPA from the user
+    def input_employee_data(employee_data: list, employee_type: object):
+        """ This function gets the first name, last name, and review date and rating from the user
 
         ChangeLog: (Who, When, What)
         RRoot,1.1.2030,Created function
+        Robby Hanovich, 13 June 2026, moved to IO class and modified input methods.
 
         :param employee_data: list of dictionary rows to be filled with input data
 
@@ -114,9 +113,7 @@ class IO:
 
         try:
             # Input the data
-
             employee_object = Employee ()
-
             employee_object.first_name = input("What is the employee's first name? ")
             employee_object.last_name = input("What is the employee's last name? ")
             employee_object.review_date = input("What is their review date (YYYY-MM-DD)? ")

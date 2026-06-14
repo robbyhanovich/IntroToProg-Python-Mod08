@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------------------------- #
 # Title: Data Classes
-# # Description: Contains the Person Class and Employee Class.
+# # Description: Contains the Person Class and Employee classes.
 # ChangeLog: (Who, When, What)
 # Robby Hanovich, 7 June 2026, Created Script
 # -------------------------------------------------------------------------------------------------
@@ -31,12 +31,12 @@ class Person:
 
     @first_name.setter
     def first_name(self, value: str):
-        # allow for compound first names like Mary Sue
-        # strip extra spaces
+        # Allow for compound first names like Mary Sue
+        # Strip extra spaces
         while value.find("  ") != -1:
             value = value.replace("  ", " ")
 
-        for char in value: #allow for ' in name like D'ante
+        for char in value: # Allow for ' in name like D'ante
             if (char.isalpha() or char in "'" or char in " "):
                 continue
             else:
@@ -49,12 +49,12 @@ class Person:
 
     @last_name.setter
     def last_name(self, value: str):
-        # allow for compound first names like Van Burry or O'Connor
-        # strip extra spaces
+        # Allow for compound first names like Van Burry or D'ante
+        # Strip extra spaces
         while value.find("  ") != -1:
             value = value.replace("  ", " ")
 
-        for char in value: #allow for ' in name like D'ante
+        for char in value: #allow for ' in last name like O'Connor
             if (char.isalpha() or char in "'" or char in " "):
                 continue
             else:
@@ -77,6 +77,7 @@ class Employee(Person):
 
     ChangeLog:
     - RRoot, 1.1.2030: Created the class.
+    - Robby Hanovich, 7 June 2026, imported the class to Data Classes Module.
     """
 
     def __init__(self, first_name: str = "", last_name: str = "", review_date: str = "1900-01-01", review_rating: int = 3):
@@ -95,7 +96,7 @@ class Employee(Person):
             date.fromisoformat(value)
             self.__review_date = value
         except ValueError:
-            raise ValueError("Incorrect data format, should be YYYY-MM-DD")
+            raise ValueError ("Incorrect data format, should be YYYY-MM-DD")
 
     @property
     def review_rating(self):
@@ -106,7 +107,7 @@ class Employee(Person):
         if value in (1, 2, 3, 4, 5):
             self.__review_rating = value
         else:
-            raise ValueError("Please choose only values 1 through 5")
+            raise ValueError ("Please choose only values 1 through 5")
 
     def __str__(self):
         return f"{self.first_name},{self.last_name},{self.review_date},{self.__review_rating}"

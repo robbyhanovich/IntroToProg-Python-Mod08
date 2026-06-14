@@ -18,7 +18,7 @@ class FileProcessor:
     """
 
     @staticmethod
-    def read_employee_data_from_file(file_name: str, employee_data: list, employee_type: Employee):
+    def read_employee_data_from_file(file_name: str, employee_data: list, employee_type: object):
         """ This function reads data from a JSON file and loads it into a list of dictionary rows
 
         ChangeLog: (Who, When, What)
